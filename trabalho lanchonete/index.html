@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lanchonete Delivery</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="topbar">
+    <div class="logo">🍔 Lanchonete</div>
+
+    <div class="search">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Buscar produto..."
+      >
+    </div>
+
+    <button class="cart-button" onclick="toggleCart()">
+      🛒 Carrinho
+      <span id="cartCount">0</span>
+    </button>
+  </header>
+
+  <main class="container">
+
+    <section class="hero">
+      <div>
+        <span class="hero-tag">DELIVERY</span>
+        <h1>Seu lanche favorito<br>na sua casa 🍔</h1>
+        <p>Escolha seus produtos e monte seu pedido.</p>
+      </div>
+    </section>
+
+    <div class="content">
+
+      <section class="products-area">
+
+        <div class="categories">
+          <button class="category active" onclick="filterProducts('todos', this)">
+            Todos
+          </button>
+
+          <button class="category" onclick="filterProducts('hamburguer', this)">
+            🍔 Hambúrgueres
+          </button>
+
+          <button class="category" onclick="filterProducts('porcao', this)">
+            🍟 Porções
+          </button>
+
+          <button class="category" onclick="filterProducts('bebida', this)">
+            🥤 Bebidas
+          </button>
+        </div>
+
+        <div id="products" class="products-grid"></div>
+
+      </section>
+
+      <aside class="cart" id="cart">
+
+        <div class="cart-header">
+          <h2>Seu pedido</h2>
+          <button class="close-cart" onclick="toggleCart()">×</button>
+        </div>
+
+        <div id="cartItems" class="cart-items">
+          <p class="empty-cart">Seu carrinho está vazio.</p>
+        </div>
+
+        <div class="cart-footer">
+
+          <div class="total">
+            <span>Total</span>
+            <strong id="cartTotal">R$ 0,00</strong>
+          </div>
+
+          <button class="checkout-button" onclick="openCheckout()">
+            Finalizar pedido
+          </button>
+
+        </div>
+
+      </aside>
+
+    </div>
+  </main>
+
+  <div class="modal" id="checkoutModal">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h2>Finalizar pedido</h2>
+        <button onclick="closeCheckout()">×</button>
+      </div>
+
+      <form id="checkoutForm">
+
+        <label>
+          Nome
+          <input type="text" id="customerName" required>
+        </label>
+
+        <label>
+          Telefone
+          <input type="tel" id="customerPhone" required>
+        </label>
+
+        <label>
+          Endereço
+          <input type="text" id="customerAddress" required>
+        </label>
+
+        <label>
+          Número
+          <input type="text" id="customerNumber" required>
+        </label>
+
+        <label>
+          Complemento
+          <input type="text" id="customerComplement">
+        </label>
+
+        <label>
+          Data de entrega
+          <input
+        type="date"
+        id="deliveryDate"
+        required
+        onkeydown="return false;"
+>
+      </label>
+
+      <label>
+       Horário de entrega
+       <input
+    type="time"
+    id="deliveryTime"
+    required
+    onkeydown="return false;"
+  >
+      </label>
+
+        <label>
+          Forma de pagamento
+
+          <select id="payment" required>
+            <option value="">Selecione</option>
+            <option value="Pix">Pix</option>
+            <option value="Cartão">Cartão</option>
+            <option value="Dinheiro">Dinheiro</option>
+          </select>
+        </label>
+
+        <button type="submit" class="checkout-button">
+          Confirmar pedido
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
